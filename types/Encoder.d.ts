@@ -1,7 +1,10 @@
 export = Encoder;
 declare class Encoder {
     setModules(_bs: any, _psy: any, _qupvt: any, _vbr: any): void;
+    bs: any;
     psy: any;
+    vbr: any;
+    qupvt: any;
     /**
      * <PRE>
      * encodeframe()           Layer 3
@@ -61,4 +64,32 @@ declare class Encoder {
      * </PRE>
      */
     lame_encode_mp3_frame: (gfp: any, inbuf_l: any, inbuf_r: any, mp3buf: any, mp3bufPos: any, mp3buf_size: any) => any;
+}
+declare namespace Encoder {
+    const ENCDELAY: number;
+    const POSTDELAY: number;
+    const MDCTDELAY: number;
+    const FFTOFFSET: number;
+    const DECDELAY: number;
+    const SBLIMIT: number;
+    const CBANDS: number;
+    const SBPSY_l: number;
+    const SBPSY_s: number;
+    const SBMAX_l: number;
+    const SBMAX_s: number;
+    const PSFB21: number;
+    const PSFB12: number;
+    const BLKSIZE: number;
+    const HBLKSIZE: number;
+    const BLKSIZE_s: number;
+    const HBLKSIZE_s: number;
+    const NORM_TYPE: number;
+    const START_TYPE: number;
+    const SHORT_TYPE: number;
+    const STOP_TYPE: number;
+    const MPG_MD_LR_LR: number;
+    const MPG_MD_LR_I: number;
+    const MPG_MD_MS_LR: number;
+    const MPG_MD_MS_I: number;
+    const fircoef: number[];
 }

@@ -1,8 +1,11 @@
 export = Quantize;
 declare class Quantize {
     setModules(_bs: any, _rv: any, _qupvt: any, _tk: any): void;
+    bs: any;
     rv: any;
     qupvt: any;
+    tk: any;
+    vbr: VBRQuantize;
     init_xrpow: (gfc: any, cod_info: any, xrpow: any) => boolean;
     init_outer_loop: (gfc: any, cod_info: any) => void;
     trancate_smallspectrums: (gfc: any, gi: any, l3_xmin: any, work: any) => void;
@@ -82,3 +85,4 @@ declare class Quantize {
      */
     calc_target_bits: (gfp: any, pe: any, ms_ener_ratio: any, targ_bits: any, analog_silence_bits: any, max_frame_bits: any) => void;
 }
+import VBRQuantize = require("./VBRQuantize.js");
