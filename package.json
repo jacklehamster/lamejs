@@ -3,12 +3,13 @@
   "version": "1.2.1",
   "description": "Pure JavaScript MP3 Encoder",
   "main": "src/js/index.js",
+  "types": "types/index.d.ts",
   "directories": {
     "doc": "doc",
     "test": "test"
   },
   "scripts": {
-    "test": "node src/js/Tests.js"
+    "test": "node src/js/Tests.js && tsd"
   },
   "repository": {
     "type": "git",
@@ -28,5 +29,9 @@
   "homepage": "https://github.com/zhuker/lamejs#readme",
   "dependencies": {
     "use-strict": "1.0.1"
+  },
+  "devDependencies": {
+    "tsd": "^0.28.1",
+    "typescript": "^5.0.4"
   }
 }

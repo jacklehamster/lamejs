@@ -15,7 +15,7 @@ function testFullLength() {
     var w = WavHeader.readHeader(new DataView(sampleBuf));
     var samples = new Int16Array(sampleBuf, w.dataOffset, w.dataLen / 2);
     var remaining = samples.length;
-    var lameEnc = new Mp3Encoder(); //w.channels, w.sampleRate, 128);
+    var lameEnc = new Mp3Encoder(w.channels, w.sampleRate, 128);
     var maxSamples = 1152;
 
     var fd = fs.openSync(path.join("testdata", "testjs2.mp3"), "w");
@@ -26,13 +26,13 @@ function testFullLength() {
 
         var mp3buf = lameEnc.encodeBuffer(left, right);
         if (mp3buf.length > 0) {
-            fs.writeSync(fd, new Buffer(mp3buf), 0, mp3buf.length);
+            fs.writeSync(fd, Buffer.from(mp3buf), 0, mp3buf.length);
         }
         remaining -= maxSamples;
     }
     var mp3buf = lameEnc.flush();
     if (mp3buf.length > 0) {
-        fs.writeSync(fd, new Buffer(mp3buf), 0, mp3buf.length);
+        fs.writeSync(fd, Buffer.from(mp3buf), 0, mp3buf.length);
     }
     fs.closeSync(fd);
     time = new Date().getTime() - time;
@@ -66,14 +66,14 @@ function testStereo44100() {
 
         var mp3buf = lameEnc.encodeBuffer(left, right);
         if (mp3buf.length > 0) {
-            fs.writeSync(fd, new Buffer(mp3buf), 0, mp3buf.length);
+            fs.writeSync(fd, new Buffer.from(mp3buf), 0, mp3buf.length);
         }
         remaining1 -= maxSamples;
 
     }
     var mp3buf = lameEnc.flush();
     if (mp3buf.length > 0) {
-        fs.writeSync(fd, new Buffer(mp3buf), 0, mp3buf.length);
+        fs.writeSync(fd, Buffer.from(mp3buf), 0, mp3buf.length);
     }
     fs.closeSync(fd);
     time = new Date().getTime() - time;
